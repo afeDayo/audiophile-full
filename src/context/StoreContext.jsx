@@ -19,7 +19,7 @@ export const StoreProvider = ({ children }) => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          "https://audiophile-server-eioh.onrender.com/api/products"
+          "https://audiophile-server-eioh.onrender.com/api/products",
         );
         setProducts(response.data);
         setLoading(false);
@@ -44,7 +44,7 @@ export const StoreProvider = ({ children }) => {
         return prevCart.map((item) =>
           item._id === product._id
             ? { ...item, quantity: item.quantity + quantity }
-            : item
+            : item,
         );
       }
       return [...prevCart, { ...product, quantity }];
@@ -64,8 +64,8 @@ export const StoreProvider = ({ children }) => {
     }
     setCart((prevCart) =>
       prevCart.map((item) =>
-        item._id === productId ? { ...item, quantity } : item
-      )
+        item._id === productId ? { ...item, quantity } : item,
+      ),
     );
   };
 
@@ -78,7 +78,7 @@ export const StoreProvider = ({ children }) => {
   const calculateTotals = () => {
     const subtotal = cart.reduce(
       (acc, item) => acc + item.price * item.quantity,
-      0
+      0,
     );
     const shipping = 50;
     const vat = Math.round(subtotal * 0.2); // 20% VAT
