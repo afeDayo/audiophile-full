@@ -19,7 +19,7 @@ export const StoreProvider = ({ children }) => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          "https://audiophile-server-eioh.onrender.com/api/products",
+          "https://audiophile-server-1-7ms7.onrender.com/api/products",
         );
         setProducts(response.data);
         setLoading(false);
